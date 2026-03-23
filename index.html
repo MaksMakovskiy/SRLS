@@ -7,36 +7,21 @@
 	<style>
 
 				:root{
-					/* light theme by default */
-					--bg: #ffffff;
-					--text: #0b0b0f;
-					--card-bg: linear-gradient(180deg,#ffffff,#f8fafc);
-					--muted: #475569;
-					--accent: #caa22a;
-					--hero-overlay-color: rgba(255,255,255,0.35);
-					--hero-image: url('truck-light.png');
-					--text-stroke: #ffffff;
-					--text-stroke-width: 0.6px;
-					--guarantee-gradient-start: #ffffff;
-					--guarantee-gradient-end: #f3f4f6;
-					--base-font-size: 17px;
-				}
-
-				html{font-size:var(--base-font-size)}
-
-				/* dark theme overrides when body has .dark */
-				body.dark{
+					/* dark theme only */
 					--bg: #0b0b0f;
 					--text: #f5f3ee;
 					--card-bg: linear-gradient(180deg,#0b1220,#0f1720);
 					--muted: #94a3b8;
+					--accent: #caa22a;
 					--hero-overlay-color: rgba(0,0,0,0.55);
 					--hero-image: url('truck-dark.png');
-					--text-stroke: rgba(0,0,0,0.85);
-					--text-stroke-width: 0.6px;
+					/* no text stroke */
 					--guarantee-gradient-start: #0b1220;
 					--guarantee-gradient-end: #0f1720;
+					--base-font-size: 17px;
 				}
+
+				html{font-size:var(--base-font-size)}
 
 				*{box-sizing:border-box}
 				body{margin:0;font-family:Inter, system-ui, -apple-system, 'Helvetica Neue', Arial;background:var(--bg);color:var(--text);transition:background .25s,color .25s}
@@ -46,13 +31,13 @@
 				.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, var(--hero-overlay-color), rgba(0,0,0,0.35));mix-blend-mode:multiply;transition:opacity .35s ease, background .35s ease;opacity:1;pointer-events:none}
 				.hero-inner{position:relative;z-index:2;text-align:center;padding:2rem}
 
-				/* Banner text: stroke for readability in both themes */
+				/* Banner text: keep font, remove strokes/outline */
 				.hero-inner .brand,
 				.hero-inner h1,
 				.hero-inner .lead{
 					color:var(--text);
-					-webkit-text-stroke: var(--text-stroke-width) var(--text-stroke);
-					text-shadow: 0 1px 0 rgba(0,0,0,0.02);
+					-webkit-text-stroke: 0; /* remove outline for browsers that support it */
+					text-shadow: none;
 				}
 
 				/* Theme toggle button */
@@ -102,7 +87,6 @@
 	<body>
 
 	<header class="hero">
-        <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
 		<div class="hero-inner">
 			<div class="brand">Trasporti nazionali ed internazionali</div>
 			<h1>MyTransport SRLS</h1>
@@ -183,28 +167,9 @@
 	<div id="gallery-root" class="container" aria-live="polite"></div>
 
 	<script>
+	// Force dark mode only
 	(function(){
-		const btn = document.getElementById('theme-toggle');
-		if(!btn) return;
-		const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-		const stored = localStorage.getItem('theme');
-		function applyTheme(theme){
-			if(theme === 'dark'){
-				document.body.classList.add('dark');
-				btn.textContent = '☀️';
-			} else {
-				document.body.classList.remove('dark');
-				btn.textContent = '🌙';
-			}
-		}
-		let initial = stored || (prefersDark ? 'dark' : 'light');
-		applyTheme(initial);
-		btn.addEventListener('click', function(){
-			const isDark = document.body.classList.toggle('dark');
-			const theme = isDark ? 'dark' : 'light';
-			localStorage.setItem('theme', theme);
-			applyTheme(theme);
-		});
+		document.body.classList.add('dark');
 	})();
 	</script>
 
