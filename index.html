@@ -1,11 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>MyTransport — Trasporti Nazionali e Internazionali</title>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>MyTransport — Trasporti Nazionali e Internazionali</title>
+	<style>
 
-<<<<<<< Updated upstream
 				:root{
 					/* dark theme only */
 					--bg: #0b0b0f;
@@ -25,35 +25,12 @@
 
 				*{box-sizing:border-box}
 				body{margin:0;font-family:Inter, system-ui, -apple-system, 'Helvetica Neue', Arial;background:var(--bg);color:var(--text);transition:background .25s,color .25s}
-=======
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Manrope:wght@600;800&display=swap"
-      rel="stylesheet" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
-      integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer" />
+				/* Hero */
+				.hero{height:calc(60vh + 20px);min-height:340px;display:flex;align-items:center;justify-content:center;position:relative;color:var(--text);background-color:#111;background-position:center -20px;background-size:cover;background-repeat:no-repeat;background-image:var(--hero-image)}
+				.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg, var(--hero-overlay-color), rgba(0,0,0,0.35));mix-blend-mode:multiply;transition:opacity .35s ease, background .35s ease;opacity:1;pointer-events:none}
+				.hero-inner{position:relative;z-index:2;text-align:center;padding:2rem}
 
-    <link rel="stylesheet" href="./css/styles.css" />
-  </head>
-  <body>
-    <header class="hero">
-      <button id="theme-toggle" aria-label="Toggle theme">🌙</button>
-
-      <!-- ФОН -->
-      <video class="hero-video" autoplay muted loop playsinline>
-        <source src="red-truck.mp4" type="video/mp4" />
-      </video>
->>>>>>> Stashed changes
-
-      <div class="hero-overlay"></div>
-
-<<<<<<< Updated upstream
 				/* Banner text: keep font, remove strokes/outline */
 				.hero-inner .brand,
 				.hero-inner h1,
@@ -62,181 +39,53 @@
 					-webkit-text-stroke: 0; /* remove outline for browsers that support it */
 					text-shadow: none;
 				}
-=======
-      <!-- КОНТЕНТ -->
-      <div class="hero-inner container">
-        <div class="brand">
-          <p class="eyebrow">Trasporti nazionali ed internazionali</p>
-          <h1>MyTransport SRLS</h1>
-          <p class="lead">
-            Consegne rapide, soluzioni su misura e sicurezza certificata
-          </p>
-        </div>
-      </div>
-    </header>
->>>>>>> Stashed changes
 
-    <main class="container">
-      <section>
-        <h2>Servizi</h2>
-        <div class="services">
-          <div class="card">
-            <div class="icon">🚚</div>
-            <h3>Trasporto su strada</h3>
-            <p>
-              Rete nazionale e collegamenti internazionali con tracking in tempo
-              reale.
-            </p>
-          </div>
-          <div class="card">
-            <div class="icon">🏭</div>
-            <h3>Settori serviti</h3>
-            <ul>
-              <li>Alimentare e Grande Distribuzione Secco (Grocery)</li>
-              <li>Edilizia e Infrastrutture</li>
-              <li>Automotive e Ricambi</li>
-              <li>Eventi e fiere</li>
-              <li>Siderurgia</li>
-            </ul>
-          </div>
-          <div class="card">
-            <div class="icon">⚙️</div>
-            <h3>Soluzioni personalizzate</h3>
-            <p>Piani su misura per esigenze di volume, tempo e budget.</p>
-          </div>
-        </div>
-      </section>
+				/* Theme toggle button */
+				#theme-toggle{position:absolute;top:14px;right:14px;z-index:10;border:0;padding:.5rem .6rem;border-radius:8px;background:var(--card-bg);color:var(--text);cursor:pointer;box-shadow:0 6px 16px rgba(11,18,32,0.06)}
+				#theme-toggle:focus{outline:2px solid rgba(0,0,0,0.12)}
 
-      <section>
-        <h2>Le nostre garanzie</h2>
-        <div class="guarantees">
-          <div class="guarantee">
-            <strong>Velocità</strong>
-            <p>Tempi di consegna ottimizzati grazie a una rete efficiente.</p>
-          </div>
-          <div class="guarantee">
-            <strong>Comodità</strong>
-            <p>Processi digitalizzati e supporto cliente dedicato.</p>
-          </div>
-          <div class="guarantee">
-            <strong>Sicurezza</strong>
-            <p>Veicoli e Copertura assicurativa della merce.</p>
-          </div>
-          <div class="guarantee">
-            <strong>Impegno</strong>
-            <p>
-              Muoviamo il tuo business con efficienza, garantendo la massima
-              qualità e la totale sicurezza stradale e operativa.
-            </p>
-          </div>
-        </div>
-      </section>
+				.brand{font-size:clamp(20px,3vw,28px);letter-spacing:1px;opacity:0.95}
+				h1{margin:.3rem 0;font-size:clamp(28px,4.2vw,48px)}
+				p.lead{margin:0;font-size:1.05rem;opacity:0.95}
 
-      <section>
-        <h2>Contatti</h2>
-        <div class="contacts">
-          <div>
-            <strong>Telefono:</strong>
-            <a href="tel:+393290142502">+39 329 014 2502</a>
-          </div>
-          <div>
-            <strong>Email:</strong>
-            <a href="mailto:mytransportsrls@gmail.com"
-              >mytransportsrls@gmail.com</a
-            >
-          </div>
-          <div>
-            <strong>PEC:</strong>
-            <a href="mailto:Mytransport@pecimprese.it"
-              >Mytransport@pecimprese.it</a
-            >
-          </div>
-          <div><strong>SDI:</strong> KRRH6B9</div>
-          <div><strong>P. IVA:</strong> 03278380609</div>
-          <div><strong>Indirizzo:</strong> Veroli, 03029 FR</div>
-        </div>
-      </section>
-    </main>
+				.container{max-width:1000px;margin:2.5rem auto;padding:0 1rem}
 
-    <footer>© MyTransport SRLS — Tutti i diritti riservati</footer>
+				/* Servizi */
+				.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.2rem}
+				.card{background:var(--card-bg);border-radius:12px;padding:1.4rem;box-shadow:0 10px 30px rgba(11,18,32,0.06);text-align:center;color:var(--text)}
+				.icon{font-size:28px;margin-bottom:.6rem}
+				.icon svg{width:40px;height:40px;margin:0 auto .6rem;display:block;color:var(--accent);fill:currentColor}
+				.card h3{margin:.25rem 0;font-size:1.1rem}
+				.card p{margin:.4rem 0;color:var(--muted);font-size:.95rem}
+				.card ul{margin:.4rem 0;color:var(--muted);font-size:.95rem;list-style:disc;padding-left:1.05rem;text-align:left}
 
-    <!-- Nota: sostituire 'truck-light.png' e 'truck-dark.png' con le immagini del vostro camion nella stessa cartella; il tema userà automaticamente l'immagine scura in modalità dark -->
+				/* Garanzie */
+				.guarantees{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.6rem}
+				.guarantee{flex:1 1 220px;background:linear-gradient(180deg,var(--guarantee-gradient-start),var(--guarantee-gradient-end));color:var(--text);padding:1rem;border-radius:10px}
 
-    <!-- Gallery root (populated by JS) -->
-    <div id="gallery-root" class="container" aria-live="polite"></div>
+				/* Contatti */
+				.contacts{display:flex;flex-direction:column;gap:.6rem;margin-top:1.6rem;padding:1rem;background:var(--card-bg);border-radius:10px;color:var(--text)}
+				.contacts a{color:var(--accent);text-decoration:none}
 
-    <script>
-      (function () {
-        const btn = document.getElementById('theme-toggle');
-        if (!btn) return;
-        const prefersDark =
-          window.matchMedia &&
-          window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const stored = localStorage.getItem('theme');
-        function applyTheme(theme) {
-          if (theme === 'dark') {
-            document.body.classList.add('dark');
-            btn.textContent = '☀️';
-          } else {
-            document.body.classList.remove('dark');
-            btn.textContent = '🌙';
-          }
-        }
-        let initial = stored || (prefersDark ? 'dark' : 'light');
-        applyTheme(initial);
-        btn.addEventListener('click', function () {
-          const isDark = document.body.classList.toggle('dark');
-          const theme = isDark ? 'dark' : 'light';
-          localStorage.setItem('theme', theme);
-          applyTheme(theme);
-        });
-      })();
-    </script>
+				footer{margin:2rem 0;text-align:center;color:var(--muted);font-size:.9rem}
 
-    <script>
-      // Gallery loader: looks for images in ./gallery named 1.jpg..N.jpg and displays them
-      (function () {
-        const galleryRoot = document.getElementById('gallery-root');
-        if (!galleryRoot) return;
-        const modal = document.createElement('div');
-        modal.id = 'gallery-modal';
-        modal.innerHTML =
-          '<button class="close" aria-label="Close">✕</button><img src="" alt="">';
-        document.body.appendChild(modal);
-        const modalImg = modal.querySelector('img');
-        modal
-          .querySelector('.close')
-          .addEventListener('click', () => (modal.style.display = 'none'));
+				@media (max-width:600px){.hero{height:50vh}.hero-inner{padding:1rem}}
 
-        function showModal(src) {
-          modalImg.src = src;
-          modal.style.display = 'flex';
-        }
+				/* hero overlay opacity */
+				.hero::after{opacity:1}
 
-        // Try to load sequential images 1..12 with fallback to existing ones only
-        const images = [
-          'gallery/WhatsApp Image 2026-03-16 at 17.32.37.png',
-          'gallery/WhatsApp Image 2026-03-16 at 17.32.42.png',
-          'gallery/WhatsApp Image 2026-03-16 at 17.32.46 (1).png',
-          'gallery/WhatsApp Image 2026-03-16 at 17.32.46.png',
-        ];
-        const maxTry = 12;
-        let loaded = 0;
-        for (let i = 1; i <= maxTry; i++) {
-          const url = `gallery/${i}.png`;
-          const img = new Image();
-          img.onload = () => {
-            images.push(url);
-            loaded++;
-            renderGallery();
-          };
-          img.onerror = () => {
-            // ignore missing
-          };
-          img.src = url;
-        }
+				/* Gallery styles */
+				#gallery-root{max-width:1000px;margin:2rem auto;padding:0 1rem}
+				.gallery-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-top:1rem}
+				.gallery-grid img{width:100%;height:120px;object-fit:cover;border-radius:8px;cursor:pointer;display:block}
+				.gallery-empty{color:var(--muted);text-align:center;padding:1rem}
+				#gallery-modal{position:fixed;inset:0;background:rgba(0,0,0,0.8);display:none;align-items:center;justify-content:center;z-index:999}
+				#gallery-modal img{max-width:90%;max-height:90%;border-radius:6px}
+				#gallery-modal .close{position:absolute;top:18px;right:18px;color:#fff;background:transparent;border:0;font-size:24px;cursor:pointer}
+			</style>
+</head>
+	<body>
 
-<<<<<<< Updated upstream
 	<header class="hero">
 		<div class="hero-inner">
 			<div class="brand">Trasporti nazionali ed internazionali</div>
@@ -394,36 +243,5 @@
 	})();
 	</script>
 </body>
-=======
-        // render immediately if we already have preset images
-        renderGallery();
-
-        function renderGallery() {
-          galleryRoot.innerHTML = '';
-          const title = document.createElement('h2');
-          title.textContent = 'Galleria';
-          galleryRoot.appendChild(title);
-          if (images.length === 0 && loaded < maxTry) return; // still loading
-          if (images.length === 0) {
-            const empty = document.createElement('div');
-            empty.className = 'gallery-empty';
-            empty.textContent = 'Ancora nessuna immagine in /gallery';
-            galleryRoot.appendChild(empty);
-            return;
-          }
-          const grid = document.createElement('div');
-          grid.className = 'gallery-grid';
-          images.forEach(src => {
-            const im = document.createElement('img');
-            im.src = src;
-            im.alt = 'Gallery image';
-            im.addEventListener('click', () => showModal(src));
-            grid.appendChild(im);
-          });
-          galleryRoot.appendChild(grid);
-        }
-      })();
-    </script>
-  </body>
->>>>>>> Stashed changes
 </html>
+ 
