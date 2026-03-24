@@ -1,16 +1,9 @@
 :root {
-  /* light theme by default */
-  --bg: #ffffff;
-  --text: #0b0b0f;
-  --card-bg: linear-gradient(180deg, #ffffff, #f8fafc);
-  --muted: #475569;
+  --text-strong: #f8fafc;
+  --text-main: rgba(248, 250, 252, 0.9);
+  --text-muted: #94a3b8;
+  --text-accent: #d6b25e;
   --accent: #caa22a;
-  --hero-overlay-color: rgba(255, 255, 255, 0.35);
-  /* --hero-image: url('../truck-light.png'); */
-  --text-stroke: #ffffff;
-  --text-stroke-width: 0.6px;
-  --guarantee-gradient-start: #ffffff;
-  --guarantee-gradient-end: #f3f4f6;
   --base-font-size: 17px;
 }
 
@@ -18,33 +11,74 @@ html {
   font-size: var(--base-font-size);
 }
 
-/* dark theme overrides when body has .dark */
-body.dark {
-  --bg: #0b0b0f;
-  --text: #f5f3ee;
-  --card-bg: linear-gradient(180deg, #0b1220, #0f1720);
-  --muted: #94a3b8;
-  --hero-overlay-color: rgba(0, 0, 0, 0.55);
-  /* --hero-image: url('../truck-dark.png'); */
-  --text-stroke: rgba(0, 0, 0, 0.85);
-  --text-stroke-width: 0.6px;
-  --guarantee-gradient-start: #0b1220;
-  --guarantee-gradient-end: #0f1720;
-}
-
 * {
   box-sizing: border-box;
 }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 body {
   margin: 0;
   font-family: Inter, sans-serif;
-  /* background: var(--bg);
-  color: var(--text); */
-  transition:
-    background 0.25s,
-    color 0.25s;
-  background: #050816;
   color: #f5f7fb;
+  background:
+    radial-gradient(
+      900px 500px at 12% 18%,
+      rgba(37, 99, 235, 0.16),
+      transparent 60%
+    ),
+    radial-gradient(
+      700px 420px at 88% 22%,
+      rgba(214, 178, 94, 0.08),
+      transparent 55%
+    ),
+    radial-gradient(
+      1000px 700px at 50% 100%,
+      rgba(15, 23, 42, 0.35),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #030712 0%, #040b18 45%, #020617 100%);
+}
+
+/* Layout */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section-block {
+  position: relative;
+  padding: 2.5rem 0;
+}
+
+.section-block::before {
+  content: '';
+  position: absolute;
+  inset: -20px 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(
+      800px 280px at 18% 18%,
+      rgba(37, 99, 235, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      600px 240px at 82% 10%,
+      rgba(214, 178, 94, 0.1),
+      transparent 55%
+    );
+  filter: blur(38px);
+}
+
+.section-block > .container {
+  position: relative;
+  z-index: 1;
 }
 
 /* Hero */
@@ -56,36 +90,10 @@ body {
   overflow: hidden;
   background: #0b1220;
 }
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2));
-  z-index: 1;
-}
-.hero-inner {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
-
-/* Banner text: stroke for readability in both themes */
-.hero-inner .brand,
-.hero-inner h1,
-.hero-inner .lead {
-  color: var(--text);
-  -webkit-text-stroke: var(--text-stroke-width) var(--text-stroke);
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
-}
 
 .hero-video {
   position: absolute;
   inset: 0;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -105,37 +113,29 @@ body {
   );
 }
 
-@media (max-width: 768px) {
-  .hero {
-    background: url('../truck-light.png') center / cover no-repeat;
-  }
-
-  .hero-video {
-    display: none;
-  }
-}
-
-/* Theme toggle button */
-#theme-toggle {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  z-index: 10;
-  border: 0;
-  padding: 0.5rem 0.6rem;
-  border-radius: 8px;
-  background: var(--card-bg);
-  color: var(--text);
-  cursor: pointer;
-  box-shadow: 0 6px 16px rgba(11, 18, 32, 0.06);
-}
-#theme-toggle:focus {
-  outline: 2px solid rgba(0, 0, 0, 0.12);
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
 }
 
 .brand {
   max-width: 720px;
   text-align: left;
+}
+
+.hero-inner .brand,
+.hero-inner .lead {
+  -webkit-text-stroke: 0 transparent;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+}
+
+.hero-inner h1 {
+  -webkit-text-stroke: 0.3px rgba(0, 0, 0, 0.28);
+  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.28);
 }
 
 .eyebrow {
@@ -144,7 +144,7 @@ body {
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #d6b25e;
+  color: var(--text-accent);
 }
 
 .hero h1 {
@@ -166,41 +166,93 @@ body {
   font-weight: 400;
   color: rgba(255, 255, 255, 0.88);
 }
-.container {
-  max-width: 1000px;
-  margin: 2.5rem auto;
-  padding: 0 1rem;
+
+/* Headings */
+h2,
+.card h3,
+.guarantee strong {
+  color: var(--text-strong);
 }
 
-@media (max-width: 768px) {
-  .hero {
-    min-height: 72vh;
-  }
-
-  .hero-inner {
-    padding: 0 20px;
-  }
+/* Shared floating cards */
+.card,
+.guarantee,
+.contacts {
+  position: relative;
+  background: linear-gradient(180deg, #0a1b36 0%, #0d2346 100%);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.42),
+    0 12px 30px rgba(37, 99, 235, 0.09),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
-/* Servizi */
+.card::after,
+.guarantee::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(26px);
+  background: rgba(37, 99, 235, 0.12);
+  opacity: 0.45;
+}
+
+.card > *,
+.guarantee > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Services */
 .services {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
-  margin-top: 1.2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+  align-items: stretch;
 }
+
 .card {
-  background: var(--card-bg);
-  border-radius: 12px;
-  padding: 1.4rem;
-  box-shadow: 0 10px 30px rgba(11, 18, 32, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 260px;
+  padding: 2rem 1.6rem;
+  border-radius: 18px;
+  color: #f5f7fb;
   text-align: center;
-  color: var(--text);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  z-index: 1;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.5),
+    0 14px 34px rgba(37, 99, 235, 0.12),
+    0 0 0 1px rgba(202, 162, 42, 0.25);
+}
+
 .icon {
-  font-size: 28px;
-  margin-bottom: 0.6rem;
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 1rem;
 }
+
 .icon svg {
   width: 40px;
   height: 40px;
@@ -209,105 +261,153 @@ body {
   color: var(--accent);
   fill: currentColor;
 }
+
 .card h3 {
-  margin: 0.25rem 0;
-  font-size: 1.1rem;
+  margin: 0 0 0.9rem;
+  font-size: 1.05rem;
+  line-height: 1.25;
+  font-weight: 700;
 }
+
 .card p {
-  margin: 0.4rem 0;
-  color: var(--muted);
-  font-size: 0.95rem;
+  margin: 0;
+  max-width: 260px;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  color: var(--text-muted);
 }
+
 .card ul {
-  margin: 0.4rem 0;
-  color: var(--muted);
-  font-size: 0.95rem;
-  list-style: disc;
-  padding-left: 1.05rem;
+  margin: 0.25rem 0 0;
+  padding-left: 1.1rem;
+  width: 100%;
+  max-width: 260px;
   text-align: left;
+  list-style: disc;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  color: var(--text-muted);
 }
 
-/* Garanzie */
+.card li + li {
+  margin-top: 0.18rem;
+}
+
+/* Guarantees */
 .guarantees {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
-  margin-top: 1.6rem;
-}
-.guarantee {
-  flex: 1 1 220px;
-  background: linear-gradient(
-    180deg,
-    var(--guarantee-gradient-start),
-    var(--guarantee-gradient-end)
-  );
-  color: var(--text);
-  padding: 1rem;
-  border-radius: 10px;
+  margin-top: 2rem;
 }
 
-/* Contatti */
+.guarantee {
+  min-height: 170px;
+  padding: 1.4rem 1.2rem;
+  border-radius: 16px;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.guarantee:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.5),
+    0 14px 34px rgba(37, 99, 235, 0.12),
+    0 0 0 1px rgba(202, 162, 42, 0.2);
+}
+
+.guarantee::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  border-radius: 16px 16px 0 0;
+  background: linear-gradient(90deg, #d6b25e, rgba(214, 178, 94, 0.2));
+  z-index: 1;
+}
+
+.guarantee p {
+  color: var(--text-muted);
+}
+
+/* Contacts */
 .contacts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 1.2rem;
+  margin-top: 1.6rem;
+  padding: 1.4rem;
+  border-radius: 16px;
+}
+
+.contacts div {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
-  margin-top: 1.6rem;
-  padding: 1rem;
-  background: var(--card-bg);
-  border-radius: 10px;
-  color: var(--text);
-}
-.contacts a {
-  color: var(--accent);
-  text-decoration: none;
+  gap: 0.25rem;
 }
 
+.contacts strong {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.contacts a,
+.contacts div:not(:has(a)) {
+  font-size: 0.98rem;
+  color: var(--text-strong);
+}
+
+.contacts a {
+  color: var(--text-main);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contacts a:hover {
+  color: var(--accent);
+}
+
+/* Footer */
 footer {
   margin: 2rem 0;
   text-align: center;
-  color: var(--muted);
+  color: var(--text-muted);
   font-size: 0.9rem;
 }
 
-@media (max-width: 600px) {
-  .hero {
-    height: 50vh;
-  }
-  .hero-inner {
-    padding: 1rem;
-  }
-}
-
-/* hero overlay opacity */
-.hero::after {
-  opacity: 1;
-}
-
-/* Gallery styles */
+/* Gallery */
 #gallery-root {
-  max-width: 1000px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 10px;
   margin-top: 1rem;
 }
+
 .gallery-grid img {
   width: 100%;
-  height: 120px;
+  height: 250px;
   object-fit: cover;
   border-radius: 8px;
   cursor: pointer;
-  display: block;
 }
+
 .gallery-empty {
-  color: var(--muted);
+  color: var(--text-muted);
   text-align: center;
   padding: 1rem;
 }
+
 #gallery-modal {
   position: fixed;
   inset: 0;
@@ -317,11 +417,13 @@ footer {
   justify-content: center;
   z-index: 999;
 }
+
 #gallery-modal img {
   max-width: 90%;
   max-height: 90%;
   border-radius: 6px;
 }
+
 #gallery-modal .close {
   position: absolute;
   top: 18px;
@@ -331,4 +433,112 @@ footer {
   border: 0;
   font-size: 24px;
   cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .guarantees {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 78vh;
+    background: url('../truck-photo.png') center center / cover no-repeat;
+  }
+
+  .hero-video {
+    display: none;
+  }
+
+  .hero-inner {
+    display: flex;
+    align-items: flex-end;
+    min-height: 78vh;
+    padding: 0 24px 40px;
+  }
+
+  .brand {
+    max-width: 320px;
+  }
+
+  .eyebrow {
+    margin: 0 0 14px;
+    max-width: 280px;
+    font-size: 12px;
+    line-height: 1.3;
+    letter-spacing: 0.16em;
+  }
+
+  .hero h1 {
+    margin: 0;
+    font-size: clamp(2.8rem, 12vw, 4rem);
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    color: var(--text-strong);
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .lead {
+    margin-top: 18px;
+    max-width: 290px;
+    font-size: 1.05rem;
+    line-height: 1.45;
+    color: var(--text-main);
+  }
+
+  .hero-overlay {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5, 8, 22, 0.1) 0%,
+        rgba(5, 8, 22, 0.18) 28%,
+        rgba(5, 8, 22, 0.38) 58%,
+        rgba(5, 8, 22, 0.68) 100%
+      ),
+      linear-gradient(
+        90deg,
+        rgba(5, 8, 22, 0.42) 0%,
+        rgba(5, 8, 22, 0.18) 42%,
+        rgba(5, 8, 22, 0.04) 100%
+      );
+  }
+
+  .services {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .card {
+    min-height: auto;
+    padding: 1.5rem 1.25rem;
+  }
+
+  .card p,
+  .card ul {
+    max-width: 100%;
+  }
+
+  .guarantees {
+    grid-template-columns: 1fr;
+  }
+
+  .guarantee {
+    min-height: auto;
+  }
+
+  .contacts {
+    grid-template-columns: 1fr;
+    padding: 1.2rem;
+  }
+
+  .section-block {
+    padding: 2rem 0;
+  }
+
+  .section-block::before {
+    inset: -10px 0;
+    filter: blur(26px);
+  }
 }
