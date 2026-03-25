@@ -171,30 +171,26 @@
           modal.style.display = 'flex';
         }
 
-        // Try to load sequential images 1..12 with fallback to existing ones only
+        // Preset images from the gallery folder (auto-populated)
         const images = [
           'gallery/WhatsApp Image 2026-03-16 at 17.32.37.png',
           'gallery/WhatsApp Image 2026-03-16 at 17.32.42.png',
           'gallery/WhatsApp Image 2026-03-16 at 17.32.46 (1).png',
           'gallery/WhatsApp Image 2026-03-16 at 17.32.46.png',
+          'gallery/WhatsApp Image 2026-03-24 at 22.17.40 (1).jpeg',
+          'gallery/WhatsApp Image 2026-03-24 at 22.17.40.jpeg',
+          'gallery/WhatsApp Image 2026-03-24 at 22.17.41 (1).jpeg',
+          'gallery/WhatsApp Image 2026-03-24 at 22.17.41 (2).jpeg',
+          'gallery/WhatsApp Image 2026-03-24 at 22.17.41 (3).jpeg',
+          'gallery/WhatsApp Image 2026-03-24 at 22.17.41 (4).jpeg',
+          'gallery/WhatsApp Image 2026-03-24 at 22.17.41 (5).jpeg',
+          'gallery/WhatsApp Image 2026-03-24 at 22.17.41.jpeg',
+          'gallery/WhatsApp Image 2026-03-24 at 22.17.42 (1).jpeg',
+          'gallery/WhatsApp Image 2026-03-24 at 22.17.42 (2).jpeg',
+          'gallery/WhatsApp Image 2026-03-24 at 22.17.42.jpeg',
         ];
-        const maxTry = 12;
-        let loaded = 0;
-        for (let i = 1; i <= maxTry; i++) {
-          const url = `gallery/${i}.png`;
-          const img = new Image();
-          img.onload = () => {
-            images.push(url);
-            loaded++;
-            renderGallery();
-          };
-          img.onerror = () => {
-            // ignore missing
-          };
-          img.src = url;
-        }
 
-        // render immediately if we already have preset images
+        // render immediately with preset images
         renderGallery();
 
         function renderGallery() {
@@ -202,7 +198,6 @@
           const title = document.createElement('h2');
           title.textContent = 'Galleria';
           galleryRoot.appendChild(title);
-          if (images.length === 0 && loaded < maxTry) return; // still loading
           if (images.length === 0) {
             const empty = document.createElement('div');
             empty.className = 'gallery-empty';
