@@ -23,7 +23,8 @@ img {
 
 body {
   margin: 0;
-  font-family: Inter, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  /* font-family: Inter, sans-serif; */
   color: #f5f7fb;
   background:
     radial-gradient(
@@ -48,12 +49,12 @@ body {
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 32px;
 }
 
 .section-block {
   position: relative;
-  padding: 2.5rem 0;
+  padding: 1rem 0;
 }
 
 .section-block::before {
@@ -149,13 +150,30 @@ body {
 
 .hero h1 {
   margin: 0;
-  font-family: 'Manrope', sans-serif;
+  /* font-family: 'Manrope', sans-serif; */
   font-size: clamp(3rem, 7vw, 5.8rem);
   line-height: 0.95;
   letter-spacing: -0.04em;
-  font-weight: 800;
+  /* font-weight: 800; */
   color: #ffffff;
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+
+  /* font-family: 'Playfair Display', serif; */
+  /* font-style: italic; */
+  /* font-weight: 700; */
+  /* letter-spacing: 0.02em; */
+  /* transform: skewX(-5deg); */
+  /* font-family: 'Roboto', sans-serif; */
+  /* font-family: 'Inter', serif; */
+  /*font-weight: 700;
+  letter-spacing: 0.02em; */
+
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+
+  transform: skewX(-6deg);
+  display: inline-block;
 }
 
 .lead {
@@ -384,7 +402,7 @@ footer {
 /* Gallery */
 #gallery-root {
   margin: 2rem auto;
-  padding: 0 1rem;
+  padding: 0 32px;
 }
 
 .gallery-grid {
@@ -442,16 +460,25 @@ footer {
   }
 }
 
+.hero-video--mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+}
 @media (max-width: 768px) {
   .hero {
     min-height: 78vh;
-    background: url('../truck-photo.png') center center / cover no-repeat;
+    /* background: url('../truck-photo.png') center center / cover no-repeat; */
   }
 
-  .hero-video {
+  .hero-video--desktop {
     display: none;
   }
 
+  .hero-video--mobile {
+    display: block;
+  }
   .hero-inner {
     display: flex;
     align-items: flex-end;
@@ -534,7 +561,7 @@ footer {
   }
 
   .section-block {
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
 
   .section-block::before {

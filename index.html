@@ -13,6 +13,13 @@
       rel="stylesheet" />
 
     <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600;1,700&display=swap"
+      rel="stylesheet" />
+
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
       integrity="sha512-4xo8blKMVCiXpTaLzQSLSw3KFOVPWhm/TRtuPVc4WG6kUgjH6J03IBuG7JZPkcWMxJ5huwaBpOpnwYElP/m6wg=="
@@ -26,16 +33,25 @@
       <!-- <button id="theme-toggle" aria-label="Toggle theme">🌙</button> -->
 
       <!-- ФОН -->
+
       <video
-        class="hero-video"
+        class="hero-video hero-video--desktop"
+        autoplay
+        muted
+        loop
+        playsinline>
+        <source src="red-truck.mp4" type="video/mp4" />
+      </video>
+
+      <video
+        class="hero-video hero-video--mobile"
         autoplay
         muted
         loop
         playsinline
-        poster="truck-light.png">
-        <source src="red-truck.mp4" type="video/mp4" />
+        poster="truck-photo.png">
+        <source src="red-truck-mob.mp4" type="video/mp4" />
       </video>
-
       <div class="hero-overlay"></div>
       <!-- КОНТЕНТ -->
       <div class="hero-inner container">
