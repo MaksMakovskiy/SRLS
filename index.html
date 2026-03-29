@@ -134,37 +134,76 @@
               <a href="tel:+393290142502">+39 329 014 2502</a>
             </div>
 
-            <div>
+            <div class="contact-item contact-item--email">
               <strong>Email:</strong>
-              <a
-                href="mailto:mytransportsrls@gmail.com?subject=Richiesta%20informazioni">
-                mytransportsrls@gmail.com
-              </a>
+
+              <div class="contact-email-actions">
+                <button
+                  class="contact-email-trigger"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="email-menu">
+                  mytransportsrls@gmail.com
+                </button>
+
+                <div class="contact-email-menu" id="email-menu">
+                  <a
+                    href="mailto:mytransportsrls@gmail.com?subject=Richiesta%20informazioni"
+                    class="contact-email-option">
+                    Apri il client di posta
+                  </a>
+
+                  <a
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=mytransportsrls@gmail.com"
+                    class="contact-email-option"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Apri in Gmail
+                  </a>
+
+                  <button
+                    type="button"
+                    class="contact-email-option contact-email-copy"
+                    data-email="mytransportsrls@gmail.com">
+                    Copia email
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <div>
-              <strong>PEC:</strong>
-              <a href="mailto:Mytransport@pecimprese.it?subject=PEC">
-                Mytransport@pecimprese.it
-              </a>
-            </div>
-            <!-- <div>
-              <strong>Email:</strong>
-              <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=mytransportsrls@gmail.com"
-                target="_blank">
-                mytransportsrls@gmail.com
-              </a>
-            </div>
-            <div>
-              <strong>PEC:</strong>
-              <a
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=mytransportsrls@gmail.com"
-                target="_blank">
-                mytransportsrls@gmail.com
-              </a>
-            </div> -->
-            <div><strong>SDI:</strong> KRRH6B9</div>
+            
+
+            <div class="contact-item contact-item--email">
+  <strong>PEC:</strong>
+
+  <div class="contact-email-actions">
+    <button
+      class="contact-email-trigger"
+      type="button"
+      aria-expanded="false"
+    >
+      Mytransport@pecimprese.it
+    </button>
+
+    <div class="contact-email-menu">
+      <a
+        href="mailto:Mytransport@pecimprese.it?subject=PEC"
+        class="contact-email-option"
+      >
+        Apri il client di posta
+      </a>
+
+      <button
+        type="button"
+        class="contact-email-option contact-email-copy"
+        data-email="Mytransport@pecimprese.it"
+      >
+        Copia PEC
+      </button>
+    </div>
+  </div>
+</div>
+ <div><strong>SDI:</strong> KRRH6B9</div>
             <div><strong>P. IVA:</strong> 03278380609</div>
 
             <div>
@@ -175,6 +214,9 @@
                 Veroli, 03029 FR
               </a>
             </div>
+            </div>
+
+           
           </div>
         </div>
       </section>
@@ -184,6 +226,75 @@
 
     <!-- Gallery root (populated by JS) -->
     <div id="gallery-root" class="container" aria-live="polite"></div>
+
+   <script>
+  (function () {
+    const contactBlocks = document.querySelectorAll('.contact-email-actions');
+
+    if (!contactBlocks.length) return;
+
+    contactBlocks.forEach((block) => {
+      const trigger = block.querySelector('.contact-email-trigger');
+      const menu = block.querySelector('.contact-email-menu');
+      const copyBtn = block.querySelector('.contact-email-copy');
+
+      if (!trigger || !menu) return;
+
+      trigger.addEventListener('click', function (event) {
+        event.stopPropagation();
+
+        const isOpen = menu.classList.toggle('is-open');
+        trigger.setAttribute('aria-expanded', String(isOpen));
+
+        // закрыть остальные меню
+        contactBlocks.forEach((otherBlock) => {
+          if (otherBlock === block) return;
+
+          const otherMenu = otherBlock.querySelector('.contact-email-menu');
+          const otherTrigger = otherBlock.querySelector('.contact-email-trigger');
+
+          if (otherMenu) otherMenu.classList.remove('is-open');
+          if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      if (copyBtn) {
+        copyBtn.addEventListener('click', async function () {
+          const email = copyBtn.dataset.email || '';
+
+          try {
+            await navigator.clipboard.writeText(email);
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Copiato';
+
+            setTimeout(() => {
+              copyBtn.textContent = originalText;
+            }, 1600);
+          } catch (error) {
+            const originalText = copyBtn.textContent;
+            copyBtn.textContent = 'Copia non riuscita';
+
+            setTimeout(() => {
+              copyBtn.textContent = originalText;
+            }, 1600);
+          }
+        });
+      }
+    });
+
+    document.addEventListener('click', function (event) {
+      contactBlocks.forEach((block) => {
+        if (!block.contains(event.target)) {
+          const menu = block.querySelector('.contact-email-menu');
+          const trigger = block.querySelector('.contact-email-trigger');
+
+          if (menu) menu.classList.remove('is-open');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+  })();
+</script>
 
     <script>
       (function () {
